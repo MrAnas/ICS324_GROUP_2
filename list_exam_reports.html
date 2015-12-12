@@ -35,9 +35,9 @@
     <div class="row">
       <div class="col-md-12">
         <ul class="nav nav-tabs">
-          <li role="presentation" ><a href="#">Exams</a></li>
+          <li role="presentation"><a href="user.html">Exams</a></li>
           <li role="presentation"><a href="edit_profile.html">Profile</a></li>
-          <li role="presentation"  class="active"><a href="report.html">Report</a></li>
+          <li role="presentation" class="active"><a href="list_exam_reports.html">Report</a></li>
 
         </ul>
       </div>
@@ -74,23 +74,27 @@
 
 
 
-  </div>
+    </div>
 
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  <script>
-    $(document).ready(function() {
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function() {
 
-      for (var i = 0; i < 10; i++) {
-        $('#completed_exams_table_body').append("<tr><td>John</td><td>12:31</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-info' >Show Report</button></li></ul></td></tr>")
+        for (var i = 0; i < 10; i++) {
+          $('#completed_exams_table_body').append("<tr><td>John</td><td>12:31</td><td><ul class='list-group'><li class='list-group-item'><button id='show_report' class= 'btn btn-info' >Show Report</button></li></ul></td></tr>")
 
-      }
+        }
+        $("#show_report").on('click',function(){
+          window.location.href = "exam_report.html"
+          
+        });
 
-    });
-  </script>
+      });
+    </script>
 </body>
 
 </html>
