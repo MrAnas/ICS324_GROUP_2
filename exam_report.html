@@ -53,17 +53,34 @@
             <th>Exam Name </th>
           </tr>
         </thead>
-        <thead>
-          <tr>
-            <th>Question</th>
-            <th>Correct Answer</th>
-            <th>User Answer</th>
-          </tr>
-        </thead>
+        <tr>
+          <th>Question</th>
+          <th>Correct Answer</th>
+          <th>User Answer</th>
+        </tr>
         <tbody id="question_report">
 
         </tbody>
       </table>
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">      number of questions answered correctly</h3>
+        </div>
+        <div class="panel-body">
+          Panel content
+        </div>
+      </div>
+      
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">total number of questions</h3>
+        </div>
+        <div class="panel-body">
+          Panel content
+        </div>
+      </div>
+      
+      , percentage correct, and a detailed listing of user responses and correct answers
     </div>
 
 
@@ -73,17 +90,18 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script>
-       $(document).ready(function() {
-             add_question_report("question text","correct_answer","user_response");
-            function add_question_report(question_text, correct_answer, user_response) {
-                var question = "";
-                question += " <tr>";
-                question += "            <td>question <\/td>";
-                question += "            <td>Correct Answer<\/td>";
-                question += "            <td>user response<\/td>";
-                question += " <\/tr>";
-                $("#question_report").append(question);
-              }
+      $(document).ready(function() {
+        add_question_report("question text", "correct_answer", "user_response");
+
+        function add_question_report(question_text, correct_answer, user_response) {
+          var question = "";
+          question += " <tr>";
+          question += "            <td>question <\/td>";
+          question += "            <td>Correct Answer<\/td>";
+          question += "            <td>user response<\/td>";
+          question += " <\/tr>";
+          $("#question_report").append(question);
+        }
       });
     </script>
 </body>
