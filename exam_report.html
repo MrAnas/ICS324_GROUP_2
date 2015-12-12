@@ -65,9 +65,7 @@
         </tbody>
       </table>
     </div>
-    <div class="col-xs-6 col-lg-6 panel panel-default">
 
-    </div>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -75,7 +73,18 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script>
-      
+       $(document).ready(function() {
+             add_question_report("question text","correct_answer","user_response");
+            function add_question_report(question_text, correct_answer, user_response) {
+                var question = "";
+                question += " <tr>";
+                question += "            <td>question <\/td>";
+                question += "            <td>Correct Answer<\/td>";
+                question += "            <td>user response<\/td>";
+                question += " <\/tr>";
+                $("#question_report").append(question);
+              }
+      });
     </script>
 </body>
 
