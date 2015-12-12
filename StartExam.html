@@ -124,6 +124,7 @@
             questionHTML += "<\/div>";
             questionHTML += "";
             questionHTML += '<button id = "next-button-'+id+'" type="button" onclick = "nextQuestion(this)" class="btn btn-primary" style="width: 100%">Save & Next Question</button>';
+            questionHTML += '<button id = "end-button-'+id+'" type="button" onclick = "submitExam(this)" class="btn btn-success" style="width: 100%">Save & Exit</button>';
             questionHTML += "<\/fieldset>";
             questionHTML += "<\/form>";
             
@@ -137,6 +138,10 @@
             prepNextID = parseInt(prep[2]) + 1;
             nextQuestionID = '#' + 'question-' + prepNextID;
             $(nextQuestionID).css('display', 'block');
+        }
+        function submitExam(button)
+        {
+            //Code to submit and save the user progress
         }
 </script>
   </body>
