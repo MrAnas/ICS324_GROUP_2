@@ -33,31 +33,8 @@
               <h1 class="text-center">List of Created Exams</h1>
           </div>
       </div>
-      <div class="exam-item">
-          <div class = "row">
-              <div class="col-md-8">
-                  <h3>Geometry</h3>
-              </div>
-              <div class="col-md-2">
-                  <a href="#"><h3>Edit</h3></a>
-              </div>
-              <div class="col-md-2">
-                  <a href="#"><h3>Delete</h3></a>
-              </div>
-          </div>
-      </div>
-      <div class="exam-item">
-          <div class = "row">
-              <div class="col-md-8">
-                  <h3>Chemistry</h3>
-              </div>
-              <div class="col-md-2">
-                  <a href="#"><h3>Edit</h3></a>
-              </div>
-              <div class="col-md-2">
-                  <a href="#"><h3>Delete</h3></a>
-              </div>
-          </div>
+      <div id="exams">
+          
       </div>
       <div class="row">
           <div class="col-md-12">
@@ -69,5 +46,41 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script>
+        
+       $(document).ready(function(){
+       
+            displayExam(1, "Geometry");
+            displayExam(2, "How to be human 101");
+            console.log("Hummus!");
+       
+       });
+       function displayExam(id, examName)
+       {
+          examHTML = '<div class="exam-item" id = "exam-"'+id+' >';
+          examHTML += '<div class = "row">';
+          examHTML += '<div class="col-md-8">';
+          examHTML += '<h3>'+ examName +'</h3>';
+          examHTML += '</div>';
+          examHTML += '<div class="col-md-2">';
+          examHTML += '<button id = "edit-'+id+'" type="button" class="btn btn-primary" onclick = "editExam(this)">Edit</button>';
+          examHTML += '</div>';
+          examHTML += '<div class="col-md-2">';
+          examHTML += '<button id = "delete-'+id+'" type="button" class="btn btn-danger" onclick = "deleteExam(this)">Delete</button>';
+          examHTML += '</div>';
+          examHTML += '</div>';
+          examHTML += '</div>';
+           
+          $('#exams').append(examHTML);
+       }
+       function deleteExam(button)
+       {
+            //Call to delete an exam
+       }
+       function editExam(button)
+       {
+            //Calll to edit an exam
+       }
+    </script>
   </body>
 </html>
