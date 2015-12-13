@@ -72,13 +72,13 @@
             <th>All Exams</th>
           </tr>
         </thead>
-        
+
           <tr>
             <th>Exam name</th>
             <th>Exam Time</th>
             <th>Controllers</th>
           </tr>
-        
+
         <tbody id="all_exams_table_body">
           <script></script>
         </tbody>
@@ -102,15 +102,40 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script>
-    $(document).ready(function() {
+  $(document).ready(function(){
+    getExams();
+    function getExams()
+    {
+      $.get("/php/getExams.php",
+      function( data ) {
+        for(i = 0 ; data.length ; i++)
+          displayExam(data[i].ETITLE , data[i].ENO , data[i].TIMEALLOWED);
+      },
+       "json"
+      );
+    }
 
-      for (var i = 0; i < 10; i++) {
-        $('#all_exams_table_body').append("<tr><td>John</td><td>12:31</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-info' >Take</button></li></ul></td></tr>")
-        $('#enroled_table_body').append("<tr><td>John</td><td>12:31</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-success' >Start</button></li></ul></td></tr>")
-
-      }
-
-    });
+    function hourMinute(a){
+      var hours = Math.trunc(a/60);
+      var minutes = a % 60;
+      return hours+" : " +minutes;
+  }
+    function displayExam(examName , examENO , examTime)
+    {
+      var time = hourMinute(examTime);
+      $('#all_exams_table_body').append("<tr><td id='exam-name-" + examENO + "'>" + examName + "</td><td>"+ time +"</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-info' id='enroll-"+ examENO +"'>Take</button></li></ul></td></tr>");
+    }
+  });
+    //
+    // $(document).ready(function() {
+    //
+    //   for (var i = 0; i < 10; i++) {
+    //     $('#all_exams_table_body').append("<tr><td>John</td><td>12:31</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-info' >Take</button></li></ul></td></tr>")
+    //     $('#enroled_table_body').append("<tr><td>John</td><td>12:31</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-success' >Start</button></li></ul></td></tr>")
+    //
+    //   }
+    //
+    // });
   </script>
 </body>
 

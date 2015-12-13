@@ -14,6 +14,7 @@
 	// 	if(!$return){
 	// 	sendErrorJSON("Error");
 	// }
-	
+	session_start();
+	$_SESSION["UNO"] = $return['UNO'];
 	echo json_encode($return);
 ?>

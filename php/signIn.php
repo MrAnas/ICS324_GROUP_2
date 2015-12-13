@@ -11,6 +11,9 @@
 
 	$return = signIn($connection, $email ,$pass);
 
+	session_start();
+		$_SESSION["UNO"] = $return["UNO"];
+
 	echo json_encode($return);
 
 
