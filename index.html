@@ -16,6 +16,8 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
   </head>
   <body>
     <div class="container" style="max-width: 700px;">
@@ -46,33 +48,42 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script scr="js/getExamsAdmin.js"></script>
     <script>
+      $(document).ready(function(){
+        getExams();
+        function getExams()
+        {
+          alert("Hi");
+          $.get("/php/getExams.php",
+          function( data ) {
+            for(i = 0 ; data.length ; i++)
+              displayExam(data[i].ETITLE , i);
+          },
+           "json"
+          );
+        }
 
-       $(document).ready(function(){
+        function displayExam(examName , id)
+        {
+           examHTML = '<div class="exam-item" id = "exam-"'+id+' >';
+           examHTML += '<div class = "row">';
+           examHTML += '<div class="col-md-8">';
+           examHTML += '<h3>'+ examName +'</h3>';
+           examHTML += '</div>';
+           examHTML += '<div class="col-md-2">';
+           examHTML += '<button id = "edit-'+id+'" type="button" class="btn btn-primary" onclick = "editExam(this)">Edit</button>';
+           examHTML += '</div>';
+           examHTML += '<div class="col-md-2">';
+           examHTML += '<button id = "delete-'+id+'" type="button" class="btn btn-danger" onclick = "deleteExam(this)">Delete</button>';
+           examHTML += '</div>';
+           examHTML += '</div>';
+           examHTML += '</div>';
 
-            displayExam(1, "Geometry");
-            displayExam(2, "How to be human 101");
-            console.log("Hummus!");
+           $('#exams').append(examHTML);
+        }
 
-       });
-       function displayExam(id, examName)
-       {
-          examHTML = '<div class="exam-item" id = "exam-"'+id+' >';
-          examHTML += '<div class = "row">';
-          examHTML += '<div class="col-md-8">';
-          examHTML += '<h3>'+ examName +'</h3>';
-          examHTML += '</div>';
-          examHTML += '<div class="col-md-2">';
-          examHTML += '<button id = "edit-'+id+'" type="button" class="btn btn-primary" onclick = "editExam(this)">Edit</button>';
-          examHTML += '</div>';
-          examHTML += '<div class="col-md-2">';
-          examHTML += '<button id = "delete-'+id+'" type="button" class="btn btn-danger" onclick = "deleteExam(this)">Delete</button>';
-          examHTML += '</div>';
-          examHTML += '</div>';
-          examHTML += '</div>';
-
-          $('#exams').append(examHTML);
-       }
+      });
        function deleteExam(button)
        {
             //Call to delete an exam
@@ -83,6 +94,6 @@
        }
     </script>
     <script src="js/bootbox.min.js"></script>
-    
+
   </body>
 </html>

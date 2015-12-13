@@ -3,6 +3,7 @@
   include('DBO.php');
 
   $connection = connectToDatabase();
+
   $examId = $_GET['examId'];
   $questionId = $_GET['questionId'];
   $optionId = $_GET['optionId'];
