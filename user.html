@@ -54,7 +54,8 @@
         <thead>
           <tr>
             <th>Exam name</th>
-            <th>Exam Time</th>
+            <th>Srat Time</th>
+            <th>End Time</th>
             <th>Controllers</th>
           </tr>
         </thead>
@@ -104,6 +105,8 @@
   <script>
   $(document).ready(function(){
     getExams();
+    getEnrolledExam();
+
     function getExams()
     {
       $.get("/php/getExams.php",
@@ -115,27 +118,38 @@
       );
     }
 
-    function hourMinute(a){
+    function hourMinute(a)
+    {
       var hours = Math.trunc(a/60);
       var minutes = a % 60;
       return hours+" : " +minutes;
-  }
+    }
+
     function displayExam(examName , examENO , examTime)
     {
       var time = hourMinute(examTime);
       $('#all_exams_table_body').append("<tr><td id='exam-name-" + examENO + "'>" + examName + "</td><td>"+ time +"</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-info' id='enroll-"+ examENO +"'>Take</button></li></ul></td></tr>");
     }
-  });
-    //
-    // $(document).ready(function() {
-    //
-    //   for (var i = 0; i < 10; i++) {
-    //     $('#all_exams_table_body').append("<tr><td>John</td><td>12:31</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-info' >Take</button></li></ul></td></tr>")
-    //     $('#enroled_table_body').append("<tr><td>John</td><td>12:31</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-success' >Start</button></li></ul></td></tr>")
-    //
-    //   }
-    //
-    // });
+
+
+    function getEnrolledExam()
+    {
+      $.get("/php/getEnrolledExams.php",
+      function( data ) {
+        for(i = 0 ; data.length  ; i++)
+          displayEnrolledExam(data[i].ETITLE , data[i].ENO , data[i].STARTTIME , data[i].FINISHTIME , data[i].TIMEALLOWED);
+      },
+       "json"
+      );
+    }
+
+
+    function displayEnrolledExam(examName , examNo , examStart , examFinish , examTime)
+    {
+      $('#enroled_table_body').append("<tr><td>"+ examName +"</td><td>"+ examStart +"</td><td>"+ examFinish +"</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-success' id='take-"+ examNo +"' >Start</button></li></ul></td></tr>")
+    }
+
+    });
   </script>
 </body>
 
