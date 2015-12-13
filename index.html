@@ -54,42 +54,53 @@
         getExams();
         function getExams()
         {
-          alert("Hi");
           $.get("/php/getExams.php",
           function( data ) {
             for(i = 0 ; data.length ; i++)
-              displayExam(data[i].ETITLE , i);
+              displayExam(data[i].ETITLE , data[i].ENO);
           },
            "json"
           );
         }
-
-        function displayExam(examName , id)
+        function displayExam(examName , examENO)
         {
-           examHTML = '<div class="exam-item" id = "exam-"'+id+' >';
+           examHTML = '<div class="exam-item" id = "exam-'+ examENO +'" >';
            examHTML += '<div class = "row">';
            examHTML += '<div class="col-md-8">';
            examHTML += '<h3>'+ examName +'</h3>';
            examHTML += '</div>';
            examHTML += '<div class="col-md-2">';
-           examHTML += '<button id = "edit-'+id+'" type="button" class="btn btn-primary" onclick = "editExam(this)">Edit</button>';
+           examHTML += '<button id = "edit-'+ examENO +'" type="button" class="btn btn-primary" onclick = "editExam(this)">Edit</button>';
            examHTML += '</div>';
            examHTML += '<div class="col-md-2">';
-           examHTML += '<button id = "delete-'+id+'" type="button" class="btn btn-danger" onclick = "deleteExam(this)">Delete</button>';
+           examHTML += '<button id = "delete-'+ examENO +'" type="button" class="btn btn-danger" onclick = "deleteExam(this)">Delete</button>';
            examHTML += '</div>';
            examHTML += '</div>';
            examHTML += '</div>';
 
            $('#exams').append(examHTML);
         }
-
       });
+
        function deleteExam(button)
        {
             //Call to delete an exam
+            var id = $(button).attr('id').split("delete-").join("");
+             $.get("/php/deleteExam.php", {examId: id },
+             function ( data ) {
+               bootbox.confirm("Are you sure?", function(result) {
+                 Example.show("Confirm result: "+result);
+                  location.reload();
+               });
+
+             },
+              "json"
+             );
        }
+
        function editExam(button)
        {
+
             //Calll to edit an exam
        }
     </script>

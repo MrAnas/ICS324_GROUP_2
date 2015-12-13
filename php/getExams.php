@@ -1,7 +1,7 @@
 <?php
 include('DBO.php');
 
-$sql = "SELECT ETITLE FROM EXAM;";
+$sql = "SELECT * FROM EXAM;";
 
 $result = execute($sql);
 

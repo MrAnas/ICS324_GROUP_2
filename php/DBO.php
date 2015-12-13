@@ -130,6 +130,12 @@
 			}
 		}
 
+		function getExams($connection)
+		{
+			$query = "SELECT ETITLE FROM EXAM";
+
+
+		}
 
 		function editExam($connection , $examID , $title , $timeAllowed)
 		{
@@ -318,7 +324,7 @@ function editUser($connection , $email , $fName, $lName , $password){
 		if($result){
 			return "Exam deleted succesfully";
 		}else{
-			return "Exam deleted failed" . mysqli_error($con);
+			return "Exam deleted failed" . mysqli_error($connection);
 		}
 	}
 
