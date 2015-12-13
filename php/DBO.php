@@ -172,11 +172,6 @@
 			}
 		}
 
-		function deleteExam($connection , $examID)
-		{
-			$query = "DELETE FROM EXAM WHERE EID '$examID' ";
-			$result = mysqli_query($connection , $query);
-		}
 
 
 		function addQuestion($connection ,$examID, $questionID , $questionText , $correctAnswer)
@@ -327,19 +322,6 @@ function editUser($connection , $email , $fName, $lName , $password){
 		}
 	}
 
-	function deleteQuestion($connection , $QNO , $ENO){
-		if(!isset($ENO)){
-			return "exam number is missing";
-		}
-		$query = "DELETE FROM EXAM WHERE ENO = '$ENO'";
-		$result = mysqli_query($connection , $query);
-
-		if($result){
-			return "Exam deleted succesfully";
-		}else{
-			return "Exam deleted failed" . mysqli_error($con);
-		}
-	}
 
 	function deleteQuestion($connection , $QNO , $ENO){
 		if(!isset($ENO)){

@@ -34,7 +34,7 @@
           </div>
       </div>
       <div id="exams">
-          
+
       </div>
       <div class="row">
           <div class="col-md-12">
@@ -47,13 +47,13 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script>
-        
+
        $(document).ready(function(){
-       
+
             displayExam(1, "Geometry");
             displayExam(2, "How to be human 101");
             console.log("Hummus!");
-       
+
        });
        function displayExam(id, examName)
        {
@@ -70,7 +70,7 @@
           examHTML += '</div>';
           examHTML += '</div>';
           examHTML += '</div>';
-           
+
           $('#exams').append(examHTML);
        }
        function deleteExam(button)
@@ -82,5 +82,7 @@
             //Calll to edit an exam
        }
     </script>
+    <script src="js/bootbox.min.js"></script>
+    
   </body>
 </html>
