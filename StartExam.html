@@ -42,34 +42,36 @@
           </div>
       </div>
       <div class="row" id = "solvable-questions">
-          
+
       </div>
     </div>
-    
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="js/bootbox.min.js"></script>
+
     <script>
         $(document).ready(function() {
-            
+
             options = ["yes", "no"];
             question = "Are you human?";
             id = 1;
-            
+
             addSolvableQuestion(id,question,options);
-            
+
             options = ["yes", "no"];
             question = "Are you robot?";
             id = 2;
-            
+
             addSolvableQuestion(id,question,options);
-            
+
             var examTime = 1000;
             var count = 1000 * 60;
             var counter = setInterval(timer, 1000); //1000 will  run it every 1 second
 
-            function timer() 
+            function timer()
             {
                 count = count - 1;
                 if (count == -1) {
@@ -109,7 +111,7 @@
             questionHTML += "<div class=\"form-group\">";
             questionHTML += "  <label class=\"col-md-4 control-label\" for=\"radios\">"+question+"<\/label>";
             questionHTML += '<div class="col-md-4">';
-            
+
             for (i = 0; i < options.length; i++)
             {
                   questionHTML += '<div class="radio">';
@@ -119,7 +121,7 @@
                   questionHTML += '</label>';
                   questionHTML += '</div>';
             }
-            
+
             questionHTML += "  <\/div>";
             questionHTML += "<\/div>";
             questionHTML += "";
@@ -127,7 +129,7 @@
             questionHTML += '<button id = "end-button-'+id+'" type="button" onclick = "submitExam(this)" class="btn btn-success" style="width: 100%">Save & Exit</button>';
             questionHTML += "<\/fieldset>";
             questionHTML += "<\/form>";
-            
+
             $('#solvable-questions').append(questionHTML);
         }
         function nextQuestion(button)
@@ -142,7 +144,10 @@
         function submitExam(button)
         {
             //Code to submit and save the user progress
+
         }
 </script>
+
+
   </body>
 </html>

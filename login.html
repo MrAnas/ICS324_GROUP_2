@@ -56,7 +56,11 @@
 
                                       <div class="col-sm-12 controls">
                                         <!-- HERE use the PHP link for the login -->
+<<<<<<< HEAD
                                         <a id="btn-login" href="#" class="btn btn-success">Login  </a>
+=======
+                                        <a id="btn-login" href="#" class="btn btn-success" onclick="signIn()">Login  </a>
+>>>>>>> refs/remotes/origin/backend-testing
 
                                       </div>
                                   </div>
@@ -80,5 +84,39 @@
                       </div>
           </div>
       </div>
+<<<<<<< HEAD
        </body>
+=======
+
+       </body>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+       <!-- Include all compiled plugins (below), or include individual files as needed -->
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+       <script>
+
+       function signIn(){
+            $.get("/php/signIn.php", { email: $("#login-email").val() , password: $("#login-password").val() },
+            function ( data ) {
+              if(data == null){
+                bootbox.confirm("wrong Entery", function(result) {
+                  location.reload();
+              });
+              } else {
+              bootbox.confirm("Welcome to our site", function(result) {
+                 window.open("/user.html");
+               }
+             );}
+            },
+             "json");
+            // .fail(function() {
+            //   bootbox.("Please check your entry", function(result) {
+            //     Example.show("Confirm result: "+result);
+            //      location.reload();
+            //   });
+            // });
+          }
+       </script>
+       <script src="js/bootbox.min.js"></script>
+>>>>>>> refs/remotes/origin/backend-testing
 </html>

@@ -16,6 +16,8 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script src='js/addExam.js'></script>
   </head>
   <body>
     <div class="container" style="max-width: 700px;">
@@ -33,14 +35,14 @@
                 <fieldset>
                 <!-- Text input-->
                 <div class="form-group">
-                  <label class="col-md-4 control-label" for="exam-name">Exam Name</label>  
+                  <label class="col-md-4 control-label" for="exam-name">Exam Name</label>
                   <div class="col-md-4">
                   <input id="exam-name" name="exam-name" type="text" placeholder="" class="form-control input-md" required="">
                   </div>
                 </div>
                 <!-- Text input-->
                 <div class="form-group">
-                  <label class="col-md-4 control-label" for="time-allowed">Time Allowed</label>  
+                  <label class="col-md-4 control-label" for="time-allowed">Time Allowed</label>
                   <div class="col-md-4">
                   <input id="time-allowed" name="time-allowed" type="text" placeholder="In Minutes" class="form-control input-md" required="">
 
@@ -69,11 +71,11 @@
       </div>
       <div class="row">
           <div class="col-md-12">
-              <button type="button" class="btn btn-primary" style="width: 100%">Save & Exit</button>
+              <button type="button" class="btn btn-primary" style="width: 100%" onclick="addExam()">Save & Exit</button>
           </div>
       </div>
     </div>
-    
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -87,7 +89,8 @@
             questionHTML += '<div class="form-group">';
             questionHTML += '<label class="col-md-4 control-label" for="question">Question Text</label>';
             questionHTML += '<div class="col-md-4">';
-            questionHTML += '<input id="question" name="question" type="text" placeholder="Enter question here" class="form-control input-md" required=""> ';
+            questionHTML += '<input id="question-text-'  + counter + '" name="question-text-' + counter + '" type="text" placeholder="Enter question here" class="form-control input-md" required=""> ';
+            questionHTML += '<input id="correct-answer-' + counter + '" name="correct-answer-' + counter + '" type="text" placeholder="Enter the Letter of Correct Answer" class="form-control input-md" required=""> ';
             questionHTML += '</div>';
             questionHTML += '</div>';
             for (i = 1; i <= options; i++)
@@ -99,7 +102,7 @@
                 questionHTML += "      <span class=\"input-group-addon\">     ";
                 questionHTML += "          <input type=\"checkbox\">     ";
                 questionHTML += "      <\/span>";
-                questionHTML += "      <input id=\"answeroption\" name=\"answeroption\" class=\"form-control\" type=\"text\" placeholder=\"Write Option Here\">";
+                questionHTML += "      <input id=\"answeroption-" + i + "\" name=\"answeroption\" class=\"form-control\" type=\"text\" placeholder=\"Write Option Here\">";
                 questionHTML += "    <\/div>";
                 questionHTML += "    ";
                 questionHTML += "  <\/div>";
@@ -123,6 +126,9 @@
             questionID = '#' + 'question-' + prep[2];
             $(questionID).remove();
         }
+
     </script>
+    <script src="js/bootbox.min.js"></script>
+
   </body>
 </html>
