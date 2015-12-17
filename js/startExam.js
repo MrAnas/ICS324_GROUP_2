@@ -27,7 +27,7 @@ $(document).ready(function() {
     $.get("/php/getExamTime.php",{examId: examId},
     function( data ) {
       examTime = data.TIMEALLOWED;
-      console.log("INSIDE GET:" + examTime);
+
       startTimer(examTime);
       },
    "json"
@@ -48,10 +48,10 @@ $(document).ready(function() {
 
 });
 
+
     function startTimer(examTime){
         var examTimeInMinutes = examTime;
         var count = examTimeInMinutes * 60;
-        console.log(examTimeInMinutes);
         var counter = setInterval(timer, 1000);
 
     function timer()
@@ -76,7 +76,6 @@ $(document).ready(function() {
     }
 }
 
-
 isFirstAdded = true;
 
 function addSolvableQuestion(id, question, options)
@@ -94,13 +93,13 @@ function addSolvableQuestion(id, question, options)
     questionHTML += "<fieldset>";
     questionHTML += "<div class=\"form-group\">";
     questionHTML += "  <label class=\"col-md-4 control-label\" for=\"radios\">"+question+"<\/label>";
-    questionHTML += '<div class="col-md-4">';
+    questionHTML += '<div class="col-md-4" id="answer-from">';
 
     for (i = 0; i < options.length; i++)
     {
           questionHTML += '<div class="radio">';
           questionHTML += '<label for="option-'+i+'">';
-          questionHTML += '<input type="radio" name="radios" id="option-'+i+'" value="option-'+i+'">';
+          questionHTML += '<input type="radio" name="radios" id="option-'+i+'" value="option-'+i+' onclick="submitAnswer(this)" >';
           questionHTML += options[i];
           questionHTML += '</label>';
           questionHTML += '</div>';
@@ -109,7 +108,7 @@ function addSolvableQuestion(id, question, options)
     questionHTML += "  <\/div>";
     questionHTML += "<\/div>";
     questionHTML += "";
-    questionHTML += '<button id = "next-button-'+id+'" type="button" onclick = "nextQuestion(this)" class="btn btn-primary" style="width: 100%">Save & Next Question</button>';
+    questionHTML += '<button id = "next-button-'+id+'" type="button" onclick = "submitAnswer(this)" class="btn btn-primary" style="width: 100%">Save & Next Question</button>';
     questionHTML += '<button id = "end-button-'+id+'" type="button" onclick = "submitExam(this)" class="btn btn-success" style="width: 100%">Save & Exit</button>';
     questionHTML += "<\/fieldset>";
     questionHTML += "<\/form>";
@@ -127,8 +126,33 @@ function nextQuestion(button)
     $(nextQuestionID).css('display', 'block');
 }
 
+
+// As mentioned in Reqs document, once submitted no resubmission for that question.
+function submitAnswer(button)
+{
+  responseChoice = $('#answer-from input[type="radio"]:checked').attr('id').split('option-').join("");
+  responseLetter = convertResponse(responseChoice);
+  responseQuestion = button.id.split("next-button-").join("");
+
+  //Post the answer to the database.
+  postAnswer(examId , responseQuestion , responseLetter);
+}
+
 function submitExam(button)
 {
     //Code to submit and save the user progress
 
+}
+
+function convertResponse(number)
+{
+  switch (number) {
+    case "0": return 'A';break;
+    case "1": return 'B';break;
+    case "2": return 'C';break;
+    case "3": return 'D';break;
+    case "4": return 'E';break;
+
+    default: return null;
   }
+}
