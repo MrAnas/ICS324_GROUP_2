@@ -1,13 +1,15 @@
 <?php
 include('DBO.php');
+include('Authentication.php');
+
 $connection = connectToDatabase();
 
 $examId = $_GET['examId'];
 $questionId = $_GET['questionId'];
 $userId = $_SESSION['UNO'];
-$respnose = $_GET['userResponse'];
+$response = $_GET['userResponse'];
 
-$result = userResponse($conneciton , $examID ,$questionID, $userID, $respnose);
+$result = userResponse($connection , $examId ,$questionId, $userId, $response);
 
 echo json_encode($result);
 

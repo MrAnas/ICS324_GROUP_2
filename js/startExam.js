@@ -149,13 +149,11 @@ function submitAnswer(button)
 //Get the next Question or the question where the user stopped at
 function nextQuestion(responseQuestion)
 {
-
-
     //prep = button.id.split('-');
     prep = responseQuestion;
-    questionID = '#' + 'question-' + prep[1];
+    questionID = '#' + 'question-' + prep;
     $(questionID).css('display','none');
-    prepNextID = parseInt(prep[1]) + 1;
+    prepNextID = parseInt(prep)+1;
     nextQuestionID = '#' + 'question-' + prepNextID;
     $(nextQuestionID).css('display', 'block');
 }

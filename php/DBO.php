@@ -276,14 +276,13 @@
 
 
 		//----------------------- User Response and Result ------------------------------------
-		function userResponse($conneciton , $examID ,$questionID, $userID, $respnose)
+		function userResponse($connection , $examID ,$questionID, $userID, $response)
 		{
 			$query = "INSERT INTO userresponse (ENO , QNO , UNO , RESPONSE ) VALUES ('$examID' , '$questionID' , '$userID' , '$response')";
 			$result = mysqli_query($connection , $query);
 
 			if ($result) {
-						$id = mysqli_insert_id($connection);
-						$query = "SELECT * FROM userresponse WHERE ENO = '$id' ";
+						$query = "SELECT * FROM userresponse WHERE UNO = '$userID' AND QNO = '$questionID' AND ENO = '$examID'";
 						$result = mysqli_query($connection, $query);
 						$row = mysqli_fetch_assoc($result);
 						return($row);
