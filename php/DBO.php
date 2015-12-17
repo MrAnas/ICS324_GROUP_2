@@ -168,7 +168,7 @@
 
 		function editExamTitle($connection , $examID ,$title)
 		{
-			$query = "UPDATE EXAM SET ETITLE = '$title' WHERE EID = '$examID' ";
+			$query = "UPDATE EXAM SET ETITLE = '$title' WHERE ENO = '$examID' ";
 			$result = mysqli_query($connection, $query);
 
 			if ($result) {
@@ -181,11 +181,26 @@
 
 		function editExamTime($connection , $timeAllowed)
 		{
-			$query = "UPDATE EXAM SET TIMEALLOWED = '$title' WHERE EID '$examID' ";
+			$query = "UPDATE EXAM SET TIMEALLOWED = '$title' WHERE ENO '$examID' ";
 			$result = mysqli_query($connection, $query);
 
 			if ($result) {
 				return("The Exam Has Been Edited Successfully!");
+			} else {
+				return("The Exam Was Not Edited. Please check exam ID");
+			}
+		}
+
+		function submitExam($connection , $examID , $userID , $finishTime){
+			$query = "UPDATE enrolls SET FINISHTIME = '$finishTime' WHERE ENO = '$examID' AND UNO = '$userID' ";
+			$result = mysqli_query($connection, $query);
+
+			if ($result) {
+				$id = mysqli_insert_id($connection);
+				$query = "SELECT * FROM enrolls WHERE ENO = '$examID' AND UNO = '$userID' ";
+				$result = mysqli_query($connection, $query);
+				$row = mysqli_fetch_assoc($result);
+				return($row);
 			} else {
 				return("The Exam Was Not Edited. Please check exam ID");
 			}

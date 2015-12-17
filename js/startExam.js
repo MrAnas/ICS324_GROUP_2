@@ -91,6 +91,8 @@ function startTimer(examTime){
     }
 }
 
+
+
 isFirstAdded = true;
 
 function addSolvableQuestion(id, question, options)
@@ -162,8 +164,12 @@ function nextQuestion(responseQuestion)
 
 function submitExam(button)
 {
-    //Code to submit and save the user progress
-
+  $.get("/php/submitExam.php",{examId: examId},
+  function( data ) {
+    // Here you can add if you want to enhance the method.
+  },
+ "json"
+  );
 }
 
 function convertResponse(number)
