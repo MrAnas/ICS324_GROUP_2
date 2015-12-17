@@ -1,19 +1,39 @@
+var examId = 129;
+
 $(document).ready(function() {
-
   var previousQuestion = 1;
-  var examId = 129;
-
-  getQuestion(examId , 1);
+  getAllQuestions(examId , 1);
   getExamTime(examId);
+});
+
+
+function getAllQuestions(examId , questionStoppedAt){
+  var questionsNubmer;
+  $.get("/php/getExam.php",{examId: examId},
+  function( data ) {
+    questionsNubmer = data.length;
+    console.log(questionsNubmer);
+    for(i = questionStoppedAt ; i <= questionsNubmer ; i++){
+      getQuestion(examId , i);
+      // Testing
+      console.log("I'm loooooooooping");
+    }
+    },
+ "json"
+);
+}
+
 
   function getQuestion(examId ,questionOrder){
-  $.get("/php/getExam.php",{examId: examId , questionId: questionOrder},
+  $.get("/php/getQuestion.php",{examId: examId , questionId: questionOrder},
   function( data ) {
     var options = [];
       for(i = 0 ; i < data.length ; i++)
       {
         options.push(data[i].OPTIONTEXT);
       }
+      // Testing
+      console.log("" + questionOrder);
       addSolvableQuestion(data[0].QNO , data[0].QTEXT , options);
     },
  "json"
@@ -34,22 +54,17 @@ $(document).ready(function() {
   );
   }
 
+// User Post his answer
+function postAnswer(examId , questionOrder, userResponse){
+  $.get("/php/postResponse.php",{examId: examId , questionId: questionOrder, userResponse: userResponse},
+  function( data ) {
+    // Here you can add if you want to enhance the method.
+  },
+ "json"
+);
+}
 
-//////////////// User Post his answer
-  function postAnswer(examId , questionOrder, userResponse){
-    $.get("/php/postResponse.php",{examId: examId , questionId: questionOrder, userResponse: userResponse},
-    function( data ) {
-      // Here you can add if you want to enhance the method.
-    },
-   "json"
-  );
-  }
-///////
-
-});
-
-
-    function startTimer(examTime){
+function startTimer(examTime){
         var examTimeInMinutes = examTime;
         var count = examTimeInMinutes * 60;
         var counter = setInterval(timer, 1000);
@@ -80,6 +95,7 @@ isFirstAdded = true;
 
 function addSolvableQuestion(id, question, options)
 {
+    console.log("WHY I'm not here");
     var questionHTML="";
     if(isFirstAdded)
     {
@@ -116,15 +132,6 @@ function addSolvableQuestion(id, question, options)
     $('#solvable-questions').append(questionHTML);
 }
 
-function nextQuestion(button)
-{
-    prep = button.id.split('-');
-    questionID = '#' + 'question-' + prep[2];
-    $(questionID).css('display','none');
-    prepNextID = parseInt(prep[2]) + 1;
-    nextQuestionID = '#' + 'question-' + prepNextID;
-    $(nextQuestionID).css('display', 'block');
-}
 
 
 // As mentioned in Reqs document, once submitted no resubmission for that question.
@@ -136,7 +143,24 @@ function submitAnswer(button)
 
   //Post the answer to the database.
   postAnswer(examId , responseQuestion , responseLetter);
+  nextQuestion(responseQuestion);
 }
+
+//Get the next Question or the question where the user stopped at
+function nextQuestion(responseQuestion)
+{
+
+
+    //prep = button.id.split('-');
+    prep = responseQuestion;
+    questionID = '#' + 'question-' + prep[1];
+    $(questionID).css('display','none');
+    prepNextID = parseInt(prep[1]) + 1;
+    nextQuestionID = '#' + 'question-' + prepNextID;
+    $(nextQuestionID).css('display', 'block');
+}
+
+
 
 function submitExam(button)
 {
