@@ -130,12 +130,12 @@
 			}
 		}
 
-		function getExams($connection)
-		{
-			$query = "SELECT ETITLE FROM EXAM";
-
-
-		}
+		// function getExams($connection)
+		// {
+		// 	$query = "SELECT ETITLE FROM EXAM";
+		//
+		//
+		// }
 
 		function editExam($connection , $examID , $title , $timeAllowed)
 		{
@@ -149,6 +149,19 @@
 						return($result);
 		} else {
 				return("The Exam Was Not Edited. Try Again Later.");
+			}
+		}
+
+		function getExamTime($connection , $examID)
+		{
+			$query = "SELECT TIMEALLOWED FROM EXAM WHERE EXAM.ENO = '$examID'";
+			$result = mysqli_query($connection, $query);
+
+			if ($result) {
+				$row = mysqli_fetch_assoc($result);
+				return($row);
+		} else {
+				return("There is no such Exam");
 			}
 		}
 

@@ -8,4 +8,5 @@
 		$return = deleteExam($connection , $ENO);
 
 		echo json_encode($return);
+		
 ?>
