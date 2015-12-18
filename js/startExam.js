@@ -74,7 +74,7 @@ function startTimer(examTime){
         count = count - 1;
         if (count == -1) {
             clearInterval(counter);
-            //Exam Time is Done!
+            submitExam();
             return;
         }
         var seconds = count % 60;
@@ -88,6 +88,8 @@ function startTimer(examTime){
         $('#minutes').append(minutes);
         $('#seconds').html('S:');
         $('#seconds').append(seconds);
+
+
     }
 }
 
@@ -127,7 +129,7 @@ function addSolvableQuestion(id, question, options)
     questionHTML += "<\/div>";
     questionHTML += "";
     questionHTML += '<button id = "next-button-'+id+'" type="button" onclick = "submitAnswer(this)" class="btn btn-primary" style="width: 100%">Save & Next Question</button>';
-    questionHTML += '<button id = "end-button-'+id+'" type="button" onclick = "submitExam(this)" class="btn btn-success" style="width: 100%">Save & Exit</button>';
+    questionHTML += '<button id = "end-button-'+id+'" type="button" onclick = "submitExam()" class="btn btn-success" style="width: 100%">Save & Exit</button>';
     questionHTML += "<\/fieldset>";
     questionHTML += "<\/form>";
 
@@ -162,7 +164,7 @@ function nextQuestion(responseQuestion)
 
 
 
-function submitExam(button)
+function submitExam()
 {
   $.get("/php/submitExam.php",{examId: examId},
   function( data ) {
