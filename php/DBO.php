@@ -327,14 +327,22 @@ function editUser($connection , $email , $fName, $lName , $password){
 		if($result){
 			return "user edieted successfully";
 		}else{
-			return "user edit failed" . mysqli_error($con);
+			return "user edit failed" . mysqli_error($connection);
 		}
 	}
 
 
-	function enroll($connection , $UNO , $ENO , $STARTTIME){
-		$query = "INSERT INTO ENROLLS (UNO, ENO, STARTTIME) VALUES('$UNO', '$ENO', '$STARTTIME')";
+	function enroll($connection , $UNO , $ENO){
+		$query = "INSERT INTO ENROLLS (UNO, ENO, STARTTIME) VALUES('$UNO', '$ENO')";
 		$result = mysqli_query($connection , $query);
+
+		if($result){
+			$row = mysqli_fetch_assoc($result);
+			return($row);
+		}
+		else {
+			return "user enrollment failed" . mysqli_error($connection)
+		}
 	}
 	function updateEnroll($connection , $UNO , $ENO , $FINISHTIME){
 		$query = "UPDATE ENROLLS SET FINISHTIME = '$FINISHTIME' WHERE UNO = '$UNO' AND ENO = '$ENO' ";
@@ -391,6 +399,18 @@ function editUser($connection , $email , $fName, $lName , $password){
 			return "option deleted succesfully";
 		}else{
 			return "option deleted failed" . mysqli_error($con);
+		}
+	}
+
+  function startExam($connection , $userId , $examId , $startTime){
+		$query = "UPDATE enrolls SET 'STARTTIME' = $startTime WHERE UNO = '$userId' AND ENO = '$examID'";
+		$result = mysqli_query($connection, $query);
+		if ($result) {
+					$row = mysqli_fetch_assoc($result);
+					return($row);
+		}
+	 else {
+			return("The Exam Was Not Started. Try Again Later.");
 		}
 	}
 ?>
