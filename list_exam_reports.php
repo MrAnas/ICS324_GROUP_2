@@ -88,6 +88,7 @@
         {
           $.get("/php/getCompletedExams.php",
           function( data ) {
+            echo data;
             for(i = 0 ; data.length ; i++)
               $('#completed_exams_table_body').append("<tr><td>" + data[i].ETITLE + "</td><td>"+ data[i].TIMEALLOWED + "</td><td><ul class='list-group'><li class='list-group-item'><button id='"+ data[i].ENO + "' class= 'btn btn-info' onclick = 'show_report(this)' >Show Report</button></li></ul></td></tr>")
 
@@ -96,13 +97,10 @@
            "json"
           );
         }
-        for (var i = 0; i < 10; i++) {
-
-        }
         function show_report(button){
             var id = $(button).attr('id');
             echo(id);
-            sessionStorage.setItem('examId_report', id)           
+            sessionStorage.setItem('examId_report', id);           
           window.location.href = "exam_report.html";
 
         }
