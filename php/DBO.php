@@ -308,21 +308,21 @@
 		}
 
 //-- Fahads' Work
-function editUser($connection , $email , $fName, $lName , $password){
+function updateProfile($connection , $userId , $fname, $lname , $password){
 		if(!isset($password)){
 			return "password is missing";
 		}
-		if(!isset($fName)){
+		if(!isset($fname)){
 			return "first name is missing";
 		}
-		if(!isset($lName)){
+		if(!isset($lname)){
 			return "last name is missing";
 		}
 
-		$query = "UPDATE user SET PASSWORD = '$password' AND FNAME = '$fName' AND LNAME = '$lName' WHERE EMAIL '$email' ";
+		$query = "UPDATE user SET PASSWORD = '$password' AND FNAME = '$fname' AND LNAME = '$lname' WHERE UNO '$userId' ";
 		$result = mysqli_query($connection , $query);
 		if($result){
-			return "user edieted successfully";
+			return "User Updated successfully";
 		}else{
 			return "user edit failed" . mysqli_error($connection);
 		}
