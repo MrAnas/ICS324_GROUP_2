@@ -54,7 +54,7 @@
         getExams();
         function getExams()
         {
-          $.get("http://10.13.22.221/php/getExams.php",
+          $.get("/php/getExams.php",
           function( data ) {
             for(i = 0 ; data.length ; i++)
               displayExam(data[i].ETITLE , data[i].ENO);
@@ -86,7 +86,7 @@
        {
             //Call to delete an exam
             var id = $(button).attr('id').split("delete-").join("");
-             $.get("http://10.13.22.221/php/deleteExam.php", {examId: id },
+             $.get("/php/deleteExam.php", {examId: id },
              function ( data ) {
                bootbox.confirm("Are you sure?", function(result) {
                   location.reload();
