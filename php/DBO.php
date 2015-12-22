@@ -2,6 +2,7 @@
 
 	global $invalidQueryInputError;
 	$invalidQueryInputError = "";
+
 	function invalidQueryInput($errno, $errstr) {
 		global $invalidQueryInputError;
 		$invalidQueryInputError = "Error: [$errno] $errstr";
@@ -341,9 +342,10 @@ function editUser($connection , $email , $fName, $lName , $password){
 			return($row);
 		}
 		else {
-			return "user enrollment failed" . mysqli_error($connection)
+			return "user enrollment failed" . mysqli_error($connection);
 		}
 	}
+
 	function updateEnroll($connection , $UNO , $ENO , $FINISHTIME){
 		$query = "UPDATE ENROLLS SET FINISHTIME = '$FINISHTIME' WHERE UNO = '$UNO' AND ENO = '$ENO' ";
 		$result = mysqli_query($connection , $query);
