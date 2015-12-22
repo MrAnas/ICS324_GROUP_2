@@ -91,6 +91,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script>
       $(document).ready(function() {
+        var id = sessionStorage.getItem('examId_report')
+          $.get("/php/getReport.php", { examId: id},
+            function ( data ) {
+              if(data == null){
+                echo "Error getting report"
+              }
+              else {
+                echo "Got result"  
+              }
+            },
+             "json");
+        
         add_question_report("question text", "correct_answer", "user_response");
 
         function add_question_report(question_text, correct_answer, user_response) {

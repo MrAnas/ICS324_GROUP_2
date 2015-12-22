@@ -82,16 +82,31 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script>
-      $(document).ready(function() {
+      $(document).ready(function(){
+        getExams();
+        function getExams()
+        {
+          $.get("/php/getCompletedExams.php",
+          function( data ) {
+            for(i = 0 ; data.length ; i++)
+              $('#completed_exams_table_body').append("<tr><td>" + data[i].ETITLE + "</td><td>"+ data[i].TIMEALLOWED + "</td><td><ul class='list-group'><li class='list-group-item'><button id='"+ data[i].ENO + "' class= 'btn btn-info' onclick = 'show_report(this)' >Show Report</button></li></ul></td></tr>")
 
+              displayExam( , data[i].ENO);
+          },
+           "json"
+          );
+        }
         for (var i = 0; i < 10; i++) {
-          $('#completed_exams_table_body').append("<tr><td>John</td><td>12:31</td><td><ul class='list-group'><li class='list-group-item'><button id='show_report' class= 'btn btn-info' >Show Report</button></li></ul></td></tr>")
 
         }
-        $("#show_report").on('click',function(){
-          window.location.href = "exam_report.html"
+        function show_report(button){
+            var id = $(button).attr('id');
+            echo(id);
+            sessionStorage.setItem('examId_report', id)           
+          window.location.href = "exam_report.html";
 
-        });
+        }
+       
 
       });
     </script>
