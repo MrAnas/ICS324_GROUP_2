@@ -310,9 +310,6 @@
 
 //-- Fahads' Work
 function editUser($connection , $email , $fName, $lName , $password){
-		if(!isset($email)){
-			return "email is missing";
-		}
 		if(!isset($password)){
 			return "password is missing";
 		}
@@ -323,7 +320,7 @@ function editUser($connection , $email , $fName, $lName , $password){
 			return "last name is missing";
 		}
 
-		$query = "UPDATE user SET EMAIL = '$email' AND PASSWORD = '$password' AND FNAME = '$fName' AND LNAME = '$lName' WHERE EMAIL '$email' ";
+		$query = "UPDATE user SET PASSWORD = '$password' AND FNAME = '$fName' AND LNAME = '$lName' WHERE EMAIL '$email' ";
 		$result = mysqli_query($connection , $query);
 		if($result){
 			return "user edieted successfully";
