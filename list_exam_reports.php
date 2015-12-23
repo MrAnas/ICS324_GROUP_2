@@ -86,7 +86,7 @@
         getExams();
         function getExams()
         {
-          $.get("http:10.13.22.221/php/getCompletedExams.php",
+          $.get("/php/getCompletedExams.php",
           function( data ) {
             console.log(data);
             for(i = 0 ; data.length ; i++)
