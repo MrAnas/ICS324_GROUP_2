@@ -4,7 +4,7 @@
         include('Authentication.php');
 		$connection = connectToDatabase();
 
-		$ENO =  $_GET["enrollID"];
+		$ENO =  $_GET["ENO"];
 
 		$return = enroll($connection , $UNO, $ENO);
 
