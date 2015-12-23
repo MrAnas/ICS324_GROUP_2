@@ -159,7 +159,7 @@
 
     function displayEnrolledExam(examName , examNo , examStart , examFinish , examTime)
     {
-      $('#enroled_table_body').append("<tr><td>"+ examName +"</td><td>"+ examStart +"</td><td>"+ examFinish +"</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-success' id='take-"+ examNo +"' >Start</button></li></ul></td></tr>")
+      $('#enroled_table_body').append("<tr><td>"+ examName +"</td><td>"+ examStart +"</td><td>"+ examFinish +"</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-success' id='take-"+ examNo +"' onclick='startExam(this)' >Start</button></li></ul></td></tr>")
     }
 
     });
