@@ -25,7 +25,7 @@
           <div class="col-md-12">
             <ul class="nav nav-tabs">
               <li role="presentation" class="active"><a href="index.php">Admin</a></li>
-              <li role="presentation"><a href="user.php">User</a></li>
+              <li role="presentation"><a href="login.php">User</a></li>
 
             </ul>
           </div>
