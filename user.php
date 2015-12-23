@@ -103,6 +103,18 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script>
+    function enrollInExam(button)
+    {
+        console.log("I am taking!");
+        prep = button.id.split('-');
+        enrollID = parseInt(prep[1]);
+        $.get("/php/enrollInExam.php", {ENO: enrollID},
+              function(data)
+              {
+            
+              }
+        , "json");
+    }
   $(document).ready(function(){
     getExams();
     getEnrolledExam();
@@ -128,20 +140,7 @@
     function displayExam(examName , examENO , examTime)
     {
       var time = hourMinute(examTime);
-      $('#all_exams_table_body').append("<tr><td id='exam-name-" + examENO + "'>" + examName + "</td><td>"+ time +"</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-info' id='enroll-"+ examENO +"' onclick='enrollInExam(this)'>Take</button></li></ul></td></tr>");
-    }
-
-    function enrollInExam(button)
-    {
-        console.log("I am taking!");
-        prep = button.id.split('-');
-        enrollID = parseInt(prep[1]);
-        $.get("/php/enrollInExam.php", {ENO: enrollID},
-              function(data)
-              {
-            
-              }
-        , "json");
+      $('#all_exams_table_body').append("<tr><td id='exam-name-" + examENO + "'>" + examName + "</td><td>"+ time +"</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-info' id='enroll-"+ examENO +"' onclick='enrollInExam(this)' >Take</button></li></ul></td></tr>");
     }
       
     function getEnrolledExam()
