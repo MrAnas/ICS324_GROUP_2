@@ -40,7 +40,7 @@
       </div>
       <div class="row">
           <div class="col-md-12">
-              <a href="AddExam.html"><button type="button" class="btn btn-success" style="width: 100%">Add an Exam</button></a>
+              <a href="AddExam.php"><button type="button" class="btn btn-success" style="width: 100%">Add an Exam</button></a>
           </div>
       </div>
     </div>
