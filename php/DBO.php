@@ -338,7 +338,7 @@ function editUser($connection , $email , $fName, $lName , $password){
 
 
 	function enroll($connection , $UNO , $ENO){
-		$query = "INSERT INTO ENROLLS (UNO, ENO, STARTTIME) VALUES('$UNO', '$ENO')";
+		$query = "INSERT INTO ENROLLS (UNO, ENO) VALUES('$UNO', '$ENO')";
 		$result = mysqli_query($connection , $query);
 
 		if($result){
