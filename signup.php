@@ -84,7 +84,7 @@
      <script>
 
      function signUp(){
-          $.get("/php/signUp.php", { email: $("#signup-email").val() , password: $("#signup-password").val() , fname:$("#signup-fname").val() , lname:$("#signup-lname").val() },
+          $.get("http://10.13.22.221/php/signUp.php", { email: $("#signup-email").val() , password: $("#signup-password").val() , fname:$("#signup-fname").val() , lname:$("#signup-lname").val() },
           function ( data ) {
             if(data == null){
               bootbox.confirm("wrong Entery", function(result) {

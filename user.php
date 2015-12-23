@@ -109,7 +109,7 @@
 
     function getExams()
     {
-      $.get("/php/getExams.php",
+      $.get("http://10.13.22.221/php/getExams.php",
       function( data ) {
         for(i = 0 ; data.length ; i++)
           displayExam(data[i].ETITLE , data[i].ENO , data[i].TIMEALLOWED);
@@ -134,7 +134,7 @@
 
     function getEnrolledExam()
     {
-      $.get("/php/getEnrolledExams.php",
+      $.get("http://10.13.22.221/php/getEnrolledExams.php",
       function( data ) {
         for(i = 0 ; data.length  ; i++)
           displayEnrolledExam(data[i].ETITLE , data[i].ENO , data[i].STARTTIME , data[i].FINISHTIME , data[i].TIMEALLOWED);
@@ -154,7 +154,7 @@
     function startExam(button)
     {
       var examId = button.id.split("take-").join("");
-      $.get("/php/startExam.php", {examId: examId},
+      $.get("http://10.13.22.221/php/startExam.php", {examId: examId},
       function( data ) {
           start(data.ENO);
       },

@@ -89,7 +89,7 @@
        <script>
 
        function signIn(){
-            $.get("/php/signIn.php", { email: $("#login-email").val() , password: $("#login-password").val() },
+            $.get("http://10.13.22.221/php/signIn.php", { email: $("#login-email").val() , password: $("#login-password").val() },
             function ( data ) {
               if(data == null){
                 bootbox.confirm("wrong Entery", function(result) {

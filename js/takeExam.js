@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 function getAllQuestions(examId , questionStoppedAt){
   var questionsNubmer;
-  $.get("/php/getExam.php",{examId: examId},
+  $.get("http://10.13.22.221/php/getExam.php",{examId: examId},
   function( data ) {
     questionsNubmer = data.length;
     console.log(questionsNubmer);
@@ -25,7 +25,7 @@ function getAllQuestions(examId , questionStoppedAt){
 
 
   function getQuestion(examId ,questionOrder){
-  $.get("/php/getQuestion.php",{examId: examId , questionId: questionOrder},
+  $.get("http://10.13.22.221/php/getQuestion.php",{examId: examId , questionId: questionOrder},
   function( data ) {
     var options = [];
       for(i = 0 ; i < data.length ; i++)
@@ -44,7 +44,7 @@ function getAllQuestions(examId , questionStoppedAt){
   function getExamTime(examId)
   {
     var examTime;
-    $.get("/php/getExamTime.php",{examId: examId},
+    $.get("http://10.13.22.221/php/getExamTime.php",{examId: examId},
     function( data ) {
       examTime = data.TIMEALLOWED;
 
@@ -56,7 +56,7 @@ function getAllQuestions(examId , questionStoppedAt){
 
 // User Post his answer
 function postAnswer(examId , questionOrder, userResponse){
-  $.get("/php/postResponse.php",{examId: examId , questionId: questionOrder, userResponse: userResponse},
+  $.get("http://10.13.22.221/php/postResponse.php",{examId: examId , questionId: questionOrder, userResponse: userResponse},
   function( data ) {
     // Here you can add if you want to enhance the method.
   },
@@ -166,7 +166,7 @@ function nextQuestion(responseQuestion)
 
 function submitExam()
 {
-  $.get("/php/submitExam.php",{examId: examId},
+  $.get("http://10.13.22.221/php/submitExam.php",{examId: examId},
   function( data ) {
     // Here you can add if you want to enhance the method.
   },

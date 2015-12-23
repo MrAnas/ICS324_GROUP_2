@@ -1,7 +1,7 @@
 function getExams()
 {
   alert("Hi");
-  $.get("/php/getExams.php",
+  $.get("http://10.13.22.221/php/getExams.php",
   function( data ) {
     for(int i = 1 ; data.length ; i++)
       displayExam(data[i].ETITLE , i);

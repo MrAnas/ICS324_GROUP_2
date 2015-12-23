@@ -56,8 +56,13 @@
 //---------------------------------------------------------------------
    function connectToDatabase()
     {
+        $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+        $server = $url["host"];
+        $username = $url["user"];
+        $password = $url["pass"];
+        $db = substr($url["path"], 1);
         //Create a connection
-        $connection = mysqli_connect("localhost", "root","","examiner");
+        $connection = mysqli_connect($server,$username,$password,$db);
         return $connection;
     }
 
