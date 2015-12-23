@@ -338,7 +338,7 @@ function updateProfile($connection , $userId , $fname, $lname , $password){
 			return($row);
 		}
 		else {
-			return "user enrollment failed" . mysqli_error($connection)
+			return "user enrollment failed" . mysqli_error($connection);
 		}
 	}
 	function updateEnroll($connection , $UNO , $ENO , $FINISHTIME){
