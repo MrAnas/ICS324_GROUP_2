@@ -170,7 +170,8 @@
       var examId = button.id.split("take-").join("");
       $.get("/php/startExam.php", {examId: examId},
       function( data ) {
-          start(data.ENO);
+          console.log(data.ENO)
+          start(examId);
       },
        "json"
       );
