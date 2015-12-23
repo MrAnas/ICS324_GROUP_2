@@ -26,8 +26,8 @@
     <div class="row">
       <div class="col-md-12">
         <ul class="nav nav-tabs">
-          <li role="presentation"><a href="index.html">Admin</a></li>
-          <li role="presentation" class="active"><a href="user.html">User</a></li>
+          <li role="presentation"><a href="index.php">Admin</a></li>
+          <li role="presentation" class="active"><a href="user.php">User</a></li>
 
         </ul>
       </div>
@@ -35,9 +35,9 @@
     <div class="row">
       <div class="col-md-12">
         <ul class="nav nav-tabs">
-          <li role="presentation"><a href="user.html">Exams</a></li>
+          <li role="presentation"><a href="user.php">Exams</a></li>
           <li role="presentation" class="active"><a href="#">Profile</a></li>
-          <li role="presentation"><a href="list_exam_reports.html">Report</a></li>
+          <li role="presentation"><a href="list_exam_reports.php">Report</a></li>
 
         </ul>
       </div>

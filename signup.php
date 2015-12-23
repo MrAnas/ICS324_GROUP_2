@@ -22,7 +22,7 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="panel-title">Sign Up</div>
-                            <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="login.html">Sign In</a></div>
+                            <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="login.php">Sign In</a></div>
                         </div>
                         <div class="panel-body" >
                             <form id="signupform" class="form-horizontal" role="form">
@@ -92,7 +92,7 @@
             });
             } else {
             bootbox.confirm("Welcome to our site", function(result) {
-               window.open("/user.html");
+               window.open("/user.php");
              }
            );}
           },

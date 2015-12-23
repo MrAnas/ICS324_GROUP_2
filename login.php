@@ -66,7 +66,7 @@
                                       <div class="col-md-12 control">
                                           <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
                                               Don't have an account!
-                                          <a href="signup.html">
+                                          <a href="signup.php">
                                               Sign Up Here
                                           </a>
                                           </div>
@@ -97,7 +97,7 @@
               });
               } else {
               bootbox.confirm("Welcome to our site", function(result) {
-                 window.open("/user.html");
+                 window.open("/user.php");
                }
              );}
             },
