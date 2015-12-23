@@ -128,10 +128,20 @@
     function displayExam(examName , examENO , examTime)
     {
       var time = hourMinute(examTime);
-      $('#all_exams_table_body').append("<tr><td id='exam-name-" + examENO + "'>" + examName + "</td><td>"+ time +"</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-info' id='enroll-"+ examENO +"'>Take</button></li></ul></td></tr>");
+      $('#all_exams_table_body').append("<tr><td id='exam-name-" + examENO + "'>" + examName + "</td><td>"+ time +"</td><td><ul class='list-group'><li class='list-group-item'><button class= 'btn btn-info' id='enroll-"+ examENO +"' onclick='enrollInExam(this)'>Take</button></li></ul></td></tr>");
     }
 
-
+    function enrollInExam(button)
+    {
+        prep = button.id.split('-');
+        enrollID = parseInt(prep[1]);
+        $.get("/php/enrollInExam.php", {ENO: enrollID},
+              function(data)
+              {
+            
+              }
+        , "json");
+    }
     function getEnrolledExam()
     {
       $.get("/php/getEnrolledExams.php",
