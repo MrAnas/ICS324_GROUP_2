@@ -1,1 +1,5 @@
-var examId = 129;
+var examId;
+function start(ENO)
+{
+    examId = ENO;
+}
