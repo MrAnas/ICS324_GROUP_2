@@ -26,8 +26,8 @@
     <div class="row">
       <div class="col-md-12">
         <ul class="nav nav-tabs">
-          <li role="presentation"><a href="index.php">Admin</a></li>
-          <li role="presentation" class="active"><a href="user.php">User</a></li>
+          <li role="presentation"><a href="index.html">Admin</a></li>
+          <li role="presentation" class="active"><a href="user.html">User</a></li>
 
         </ul>
       </div>
@@ -35,9 +35,9 @@
     <div class="row">
       <div class="col-md-12">
         <ul class="nav nav-tabs">
-          <li role="presentation"><a href="user.php">Exams</a></li>
-          <li role="presentation"><a href="edit_profile.php">Profile</a></li>
-          <li role="presentation" class="active"><a href="list_exam_reports.php">Report</a></li>
+          <li role="presentation"><a href="user.html">Exams</a></li>
+          <li role="presentation"><a href="edit_profile.html">Profile</a></li>
+          <li role="presentation" class="active"><a href="list_exam_reports.html">Report</a></li>
 
         </ul>
       </div>
@@ -91,8 +91,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script>
       $(document).ready(function() {
+        var id = sessionStorage.getItem('examId_report')
+          $.get("/php/getReport.php", { examId: id},
+            function ( data ) {
+              if(data == null){
+                echo "Error getting report"
+              }
+              else {
+                echo "Got result"  
+              }
+            },
+             "json");
+        
         add_question_report("question text", "correct_answer", "user_response");
-
         function add_question_report(question_text, correct_answer, user_response) {
           var question = "";
           question += " <tr>";
