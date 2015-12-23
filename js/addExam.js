@@ -9,7 +9,7 @@ function addExam()
       );
       }
 
-    addQuestions(ENO);
+    //addQuestions(ENO);
 }
 
 function addQuestions(ENO)
