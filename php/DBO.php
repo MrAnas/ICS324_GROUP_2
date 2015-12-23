@@ -57,7 +57,7 @@
    function connectToDatabase()
     {
         //Create a connection
-        $connection = mysqli_connect("http://10.13.22.221/", "root","","examiner");
+        $connection = mysqli_connect("localhost", "root","","examiner");
         return $connection;
     }
 
