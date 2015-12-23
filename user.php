@@ -133,6 +133,7 @@
 
     function enrollInExam(button)
     {
+        console.log("I am taking!");
         prep = button.id.split('-');
         enrollID = parseInt(prep[1]);
         $.get("/php/enrollInExam.php", {ENO: enrollID},
