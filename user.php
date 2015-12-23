@@ -142,6 +142,7 @@
               }
         , "json");
     }
+      
     function getEnrolledExam()
     {
       $.get("/php/getEnrolledExams.php",
