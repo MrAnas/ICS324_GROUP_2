@@ -88,7 +88,7 @@
         {
           $.get("http:10.13.22.221/php/getCompletedExams.php",
           function( data ) {
-            echo data;
+            console.log( data);
             for(i = 0 ; data.length ; i++)
               $('#completed_exams_table_body').append("<tr><td>" + data[i].ETITLE + "</td><td>"+ data[i].TIMEALLOWED + "</td><td><ul class='list-group'><li class='list-group-item'><button id='"+ data[i].ENO + "' class= 'btn btn-info' onclick = 'show_report(this)' >Show Report</button></li></ul></td></tr>")
               displayExam( , data[i].ENO);
