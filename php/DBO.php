@@ -346,7 +346,7 @@ function editUser($connection , $email , $fName, $lName , $password){
 			return($row);
 		}
 		else {
-			return "user enrollment failed" . mysqli_error($connection)
+			return "user enrollment failed" . mysqli_error($connection);
 		}
 	}
 	function updateEnroll($connection , $UNO , $ENO , $FINISHTIME){
