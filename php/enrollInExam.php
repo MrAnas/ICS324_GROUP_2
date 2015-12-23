@@ -1,10 +1,10 @@
 <?php
 
 		include('DBO.php');
-        include('Authentication.php');
 		$connection = connectToDatabase();
 
 		$ENO =  $_GET["ENO"];
+        $UNO =  $_GET["UNO"];
 
 		$return = enroll($connection , $UNO, $ENO);
 

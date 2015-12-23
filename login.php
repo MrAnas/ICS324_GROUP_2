@@ -97,7 +97,7 @@
               });
               } else {
               bootbox.confirm("Welcome to our site", function(result) {
-                 console.log(data);
+                 Cookies.set('UNO', data.UNO);
                  window.open("/user.php");
                }
              );}
